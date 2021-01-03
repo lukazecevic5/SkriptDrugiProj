@@ -6,9 +6,14 @@
         <div class="card-header">
             <h1>
                 {{ movie.title }}
-                {% if perms.app.change_article %}
+                {% if perms.app.change_movie %}
                     <a href="{% url 'app:edit' movie.id %}">
                         <span class="badge badge-primary">Edit</span>
+                    </a>
+                {% endif %}
+                {% if perms.app.delete_movie %}
+                    <a href="{% url 'app:delete' movie.id %}">
+                        <span class="badge badge-primary">Delete</span>
                     </a>
                 {% endif %}
             </h1>

@@ -45,6 +45,15 @@ def edit(request, id):
         form = MovieForm(instance=a)
         return render(request, 'edit.html', {'form': form, 'id': id})
 
+
+@permission_required('app.delete_movie')
+def delete(request, id):
+    a = Movie.objects.get(id=id)
+    a.delete()
+    tmp = Movie.objects.all()
+    return render(request, 'movies.html', {'movies': tmp})
+
+
 @permission_required('app.add_movie')
 def new(request):
     if request.method == 'POST':
