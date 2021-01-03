@@ -1,0 +1,25 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'app:movies' %}">
+        <img src="{% static 'img/cinema.png' %}" width="30" height="30" class="d-inline-block align-top" alt="logo"/>
+        Luka's Movie Reviews
+    </a>
+
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            {% if not perms.demo_app.add_article %}
+                <a class="nav-link disabled" href="{% url 'app:new' %}">New movie</a>
+            {% else %}
+                <a class="nav-link" href="{% url 'app:new' %}">New movie</a>
+            {% endif %}
+        </li>
+    </ul>
+
+    {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'logout' %}">Logout {{ user.get_username }}</a>
+    {% else %}
+        <a class="nav-link" href="{% url 'signup' %}">Register</a>
+    {% endif %}
+
+</nav>

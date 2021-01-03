@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('content', models.TextField()),
-                ('movie', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='reviews.movie')),
+                ('movie', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.movie')),
             ],
         ),
     ]
